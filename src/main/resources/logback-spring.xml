@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <springProfile name="prod">
+    <appender name="CUSTOM_LOGGING_APPENDER" class="com.terratrue.logging.CustomLoggingAppender">
+      <log>appengine.googleapis.com%2Frequest_log</log>
+      <flushLevel>WARN</flushLevel>
+    </appender>
+    <!-- Configure additional loggers to use the CUSTOM_LOGGING_APPENDER -->
+    <logger name="com.terratrue" level="INFO">
+      <appender-ref ref="CUSTOM_LOGGING_APPENDER"/>
+    </logger>
+    <root level="INFO">
+      <appender-ref ref="STDOUT"/>
+    </root>
+  </springProfile>
+
+  <springProfile name="dev">
+    <logger name="com.terratrue" level="INFO"/>
+    <root level="WARN">
+      <appender-ref ref="STDOUT"/>
+    </root>
+  </springProfile>
+</configuration>

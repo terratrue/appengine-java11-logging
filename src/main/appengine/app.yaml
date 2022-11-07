@@ -1,0 +1,6 @@
+runtime: java11
+env: standard
+runtime_config:
+  jdk: openjdk11
+
+entrypoint: java -jar appengine-java11-logging-1.jar
