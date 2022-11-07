@@ -1,5 +1,8 @@
 # A custom Logback appender for App Engine standard Java 11 runtime
 
+Please refer to [our engineering blog](https://terratruehq.com/engineering/application-logging-improvements-for-google-app-engine-java-11-runtime/)
+for the background of this repo.
+
 This Logback appender supports the following functionality:
 
 1. Group app logs for a request under a new request log entry
